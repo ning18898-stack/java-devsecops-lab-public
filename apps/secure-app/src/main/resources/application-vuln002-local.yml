@@ -1,0 +1,15 @@
+lab:
+  vuln002:
+    enabled: ${VULN002_ENABLED:false}
+spring:
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+server:
+  servlet:
+    session:
+      timeout: 30m
+      cookie:
+        name: VULN002SECSESSION
+        http-only: true
+        same-site: strict

@@ -1,0 +1,17 @@
+stateDiagram-v2
+    [*] --> unreviewed
+    unreviewed --> confirmed : Review reason
+    unreviewed --> false_positive : Triage reason
+    unreviewed --> accepted_risk : Acceptance reason
+    confirmed --> fixing : Repair planned
+    confirmed --> false_positive : Triage reason
+    confirmed --> accepted_risk : Acceptance reason
+    fixing --> confirmed : Repair abandoned
+    fixing --> pending_verification : Repair declaration exists
+    fixing --> accepted_risk : Acceptance reason
+    pending_verification --> fixing : Retest still present
+    pending_verification --> closed : Latest evidenced retest
+    pending_verification --> accepted_risk : Acceptance reason
+    closed --> confirmed : Reopened with reason
+    false_positive --> unreviewed : Reconsidered
+    accepted_risk --> confirmed : Reconsidered

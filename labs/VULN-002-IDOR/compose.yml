@@ -1,0 +1,26 @@
+name: java-devsecops-vuln002
+services:
+  mysql:
+    image: mysql:8.4.9
+    environment:
+      MYSQL_ROOT_PASSWORD: ${VULN002_ROOT_PASSWORD:?Initialize VULN-002 credentials}
+      VULN002_APP_PASSWORD: ${VULN002_APP_PASSWORD:?Initialize VULN-002 credentials}
+      VULN002_MANAGER_PASSWORD: ${VULN002_MANAGER_PASSWORD:?Initialize VULN-002 credentials}
+      VULN002_READER_PASSWORD: ${VULN002_READER_PASSWORD:?Initialize VULN-002 credentials}
+    command: ["--default-time-zone=+00:00", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_0900_ai_ci"]
+    ports:
+      - "127.0.0.1:13309:3306"
+    volumes:
+      - vuln002-data:/var/lib/mysql
+      - ../../infra/mysql/vuln002-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          MYSQL_PWD="$$MYSQL_ROOT_PASSWORD" mysql -uroot -e 'SELECT 1' >/dev/null 2>&1
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+volumes:
+  vuln002-data:

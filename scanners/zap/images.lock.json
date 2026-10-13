@@ -1,0 +1,9 @@
+{
+  "zap": "zaproxy/zap-stable@sha256:7aaa659b0d43078febd82e29bad112285c370727e86ab8340444220e17d9f0d2",
+  "zap_version": "2.17.0",
+  "java": "eclipse-temurin@sha256:207ecae0b2b104dfc6dfa763d1e9cd2041cb344800a180e24cb1a28ed533ff90",
+  "python": "python@sha256:090ba77e2958f6af52a5341f788b50b032dd4ca28377d2893dcf1ecbdfdfe203",
+  "java_version": "17.0.20.1+1",
+  "python_version": "3.12.13",
+  "platform": "linux/amd64"
+}

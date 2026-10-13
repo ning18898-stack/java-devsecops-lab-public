@@ -1,0 +1,16 @@
+edges
+| Test.java:8:19:8:44 | input : String | Test.java:8:71:8:75 | input : String | provenance |  |
+| Test.java:8:71:8:75 | input : String | Test.java:12:19:12:30 | value : String | provenance |  |
+| Test.java:12:19:12:30 | value : String | Test.java:12:55:12:59 | value : String | provenance |  |
+| Test.java:12:55:12:59 | value : String | Test.java:20:59:20:76 | get(...) : Object | provenance | Config |
+| Test.java:20:59:20:76 | get(...) : Object | Test.java:20:16:20:82 | ... + ... | provenance |  |
+nodes
+| Test.java:8:19:8:44 | input : String | semmle.label | input : String |
+| Test.java:8:71:8:75 | input : String | semmle.label | input : String |
+| Test.java:12:19:12:30 | value : String | semmle.label | value : String |
+| Test.java:12:55:12:59 | value : String | semmle.label | value : String |
+| Test.java:20:16:20:82 | ... + ... | semmle.label | ... + ... |
+| Test.java:20:59:20:76 | get(...) : Object | semmle.label | get(...) : Object |
+subpaths
+#select
+| Test.java:20:16:20:82 | ... + ... | Test.java:8:19:8:44 | input : String | Test.java:20:16:20:82 | ... + ... | Request input reaches provider SQL text through the annotated MyBatis parameter map. |

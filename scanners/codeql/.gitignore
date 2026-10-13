@@ -1,0 +1,9 @@
+# Official test runner caches and observed results are runtime outputs.
+*.actual
+*.testproj
+*.testproj/**
+*.bqrs
+*.qlx
+*.trap
+*.trap.gz
+*.class

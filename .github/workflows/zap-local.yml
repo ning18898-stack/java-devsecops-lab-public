@@ -1,0 +1,37 @@
+name: Isolated passive ZAP
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: isolated-zap-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  passive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11.9'
+      - name: Download checksum-locked Temurin 17.0.20.1+1
+        id: jdk
+        run: python scripts/phase6/bootstrap.py jdk-archive
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961
+        with:
+          distribution: jdkfile
+          java-version: '17.0.20' # SemVer cache label; actual runtime remains pinned by archive SHA-256.
+          jdk-file: ${{ steps.jdk.outputs.archive }}
+          cache: maven
+          cache-dependency-path: apps/vulnerable-app/pom.xml
+      - run: python scripts/phase6/ci.py zap
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: zap-reviewed-results
+          path: artifacts/phase6-public/
+          retention-days: 7
+          if-no-files-found: error

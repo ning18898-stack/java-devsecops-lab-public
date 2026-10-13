@@ -1,0 +1,4 @@
+- description: Phase 2 experiment static analysis
+- query: queries/SqlInjection.ql
+- query: queries/IdorUpdate.ql
+- query: queries/IdorService.ql

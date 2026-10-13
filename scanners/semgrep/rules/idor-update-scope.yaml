@@ -1,0 +1,16 @@
+rules:
+  - id: java-lab-idor-update-scope
+    languages: [java]
+    severity: WARNING
+    message: Lab article UPDATE has id/run scope but lacks a bound user_id ownership predicate. Review service authorization too.
+    metadata:
+      cwe: CWE-862
+      scope: MyBatis annotation UPDATE of lab_articles with id and run_id; requires owner-only write policy
+    patterns:
+      - pattern: '@Update($SQL)'
+      - metavariable-regex:
+          metavariable: $SQL
+          regex: '(?is)^"\s*UPDATE\s+lab_articles\s+SET\b.*\bWHERE\b(?=.*\bid\s*=\s*#\{[^}]+\})(?=.*\brun_id\s*=\s*#\{[^}]+\}).*'
+      - metavariable-regex:
+          metavariable: $SQL
+          regex: '(?is)^(?!.*\bWHERE\b.*\buser_id\s*=\s*#\{[^}]+\}).*$'

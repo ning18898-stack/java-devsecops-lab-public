@@ -1,0 +1,24 @@
+name: java-devsecops-vuln001
+services:
+  mysql:
+    image: mysql:8.4.9
+    profiles: [vuln001]
+    environment:
+      MYSQL_DATABASE: lab_vuln001
+      MYSQL_USER: vuln001_reader
+      MYSQL_PASSWORD: ${VULN001_DB_PASSWORD:?Initialize local lab credentials}
+      MYSQL_ROOT_PASSWORD: ${VULN001_ROOT_PASSWORD:?Initialize local lab credentials}
+    command: ["--default-time-zone=+00:00", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_0900_ai_ci"]
+    ports:
+      - "127.0.0.1:13308:3306"
+    volumes:
+      - vuln001-data:/var/lib/mysql
+      - ../../infra/mysql/vuln001-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$$MYSQL_PASSWORD\" mysql --protocol=TCP -h 127.0.0.1 -u\"$$MYSQL_USER\" \"$$MYSQL_DATABASE\" -e 'SELECT COUNT(*) FROM lab_articles' >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+volumes:
+  vuln001-data:

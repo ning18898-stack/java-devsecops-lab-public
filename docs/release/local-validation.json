@@ -1,0 +1,118 @@
+{
+  "PUBLIC_RELEASE_CANDIDATE_READY": true,
+  "PHASE6_READY": false,
+  "scope": "Local independently reviewed source candidate only",
+  "generated": "2026-10-13T13:57:56.466226+00:00",
+  "matrix": {
+    "java": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T12:55:21.026004+00:00",
+      "ended": "2026-10-13T13:00:26.278123+00:00",
+      "receipt_sha256": "1a5a6c0ed0c406bc06750b143d8046c914660fdcdd5e369bcea760a15b49d2d0"
+    },
+    "python": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T13:52:30.683269+00:00",
+      "ended": "2026-10-13T13:52:47.791037+00:00",
+      "receipt_sha256": "24e35de0ca0e720cdcd69e99acd2a7c34447821ba2e950735fbf2ca44336596c"
+    },
+    "backend": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T13:30:20.625065+00:00",
+      "ended": "2026-10-13T13:30:55.837184+00:00",
+      "receipt_sha256": "76c30d1b8c77b2c08af86f545f5cf3769c45af894f4bc664b4040a4a6f5c0ce4"
+    },
+    "frontend": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T13:17:01.244034+00:00",
+      "ended": "2026-10-13T13:17:41.745659+00:00",
+      "receipt_sha256": "737c3690284015684d69e66df78786c7b1fe0f2304c3ec3538a86a37b52a1b38"
+    },
+    "semgrep": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T13:00:53.259736+00:00",
+      "ended": "2026-10-13T13:01:26.705041+00:00",
+      "receipt_sha256": "8dc9f8616c1b4cec783803b11d1748b97e221fdf5e1259ad39ef840d92d7d793"
+    },
+    "codeql": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T13:01:26.938213+00:00",
+      "ended": "2026-10-13T13:07:21.663994+00:00",
+      "receipt_sha256": "69b1be1f9e39fa456875d81fe49c59a47a7ce889693549f7809cbea94280108f"
+    },
+    "zap": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T13:07:21.977754+00:00",
+      "ended": "2026-10-13T13:09:10.148178+00:00",
+      "receipt_sha256": "a829ba828e90ae449822d68af9fe97fd86dc1418f0fdb866f0d086aa2ad012de"
+    },
+    "hygiene": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T13:52:48.081366+00:00",
+      "ended": "2026-10-13T13:52:50.018988+00:00",
+      "receipt_sha256": "f25faa687afd391355f50f253070068d59de7beac169311fd1701af1551aa073"
+    },
+    "workflows": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T13:52:55.050723+00:00",
+      "ended": "2026-10-13T13:52:55.441809+00:00",
+      "receipt_sha256": "d7fe7771b98288a6ccd2ca957b280428deeef5001b2b22244303919699232980"
+    },
+    "dashboard_integration": {
+      "status": "PASS",
+      "exit_code": 0,
+      "started": "2026-10-13T13:26:04.943917+00:00",
+      "ended": "2026-10-13T13:26:18.846914+00:00",
+      "http_requests": 17,
+      "edge_tests": 3,
+      "restart": "PASS",
+      "receipt_sha256": "e3d4015c9e115a54206100c0b820c634b43b9dd258cbd678392805a80c69335b"
+    },
+    "clean_export": {
+      "status": "PASS",
+      "exit_code": 0,
+      "backend_tests": 51,
+      "fresh_venv": true,
+      "copied_private_history": false,
+      "receipt_sha256": "8411a5008806183afe9cfaa6681761e5216087c9fc4e8a873b4bc75b721534bf"
+    }
+  },
+  "counts": {
+    "java_quick": {
+      "vulnerable": 81,
+      "secure": 41
+    },
+    "java_mysql": {
+      "vulnerable": 81,
+      "secure": 41
+    },
+    "python": 83,
+    "fastapi": 51,
+    "vue": 7,
+    "edge": 3,
+    "http": 17,
+    "semgrep": [
+      2,
+      0
+    ],
+    "codeql": [
+      3,
+      0
+    ],
+    "codeql_query_tests": 3,
+    "zap_requests": 5,
+    "zap_alerts": 0
+  },
+  "reused": "Declared host tools/download caches only; no private PASS receipts",
+  "hosted_validation": "NOT_TESTED; no remote creation/push/visibility change",
+  "license": "Apache-2.0, maintainer-confirmed own content; third-party terms retained"
+}

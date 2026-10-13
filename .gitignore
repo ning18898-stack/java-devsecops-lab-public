@@ -1,0 +1,40 @@
+# Local credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+.tools/
+
+# Runtime outputs (retain the directory placeholder)
+artifacts/*
+!artifacts/.gitkeep
+*.log
+
+# Java, Python, and frontend build/test outputs
+target/
+build/
+dist/
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage/
+htmlcov/
+
+# Editor and OS metadata
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Only generated withholding stubs; never raw operational logs
+!reports/examples/phase4-reviewed/*/operational.log

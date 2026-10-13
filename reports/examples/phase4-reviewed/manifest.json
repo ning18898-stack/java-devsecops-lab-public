@@ -1,0 +1,20 @@
+{
+  "provenance": "Reprocessed demonstration fixtures; not a fresh scan. Original Git history, private identities and operational evidence withheld.",
+  "files": {
+    ".gitattributes": "c803972641141f4e27330502b0a11977db06194daa230557145c3c55c1303310",
+    "release-example-001/codeql-secure.sarif": "c7d54becbce7938d612f5cf3720ddf6743b0d348f237d25b2acc5888f82ae82e",
+    "release-example-001/codeql-vulnerable.sarif": "e975c1c3c5a1acbdc2d06a08d99502de4ae4dd01400ac98c212e698e343af550",
+    "release-example-001/operational.log": "13217a4f70689259cf7401a29f2dd57038a118e4c95ce315e3bcb9aef03e2205",
+    "release-example-001/report.json": "e018c7a918aa423a885b717987630f26d5793cf3b5c90166f97ca0670a4d4cd3",
+    "release-example-001/semgrep-secure.json": "f37a3987a7d03e77b2f167990c402007887d931906a579ef851060f5d47fafd8",
+    "release-example-001/semgrep-vulnerable.json": "49fd166af47c7f44408b5b59c89e613a39accc6ba31037c244ce70808579cd4f",
+    "release-example-001/zap.json": "27b776cf4d637166f0157214b9a06c24e19a2e12d9403042347a3dd0fc120d46",
+    "release-example-002/codeql-secure.sarif": "c7d54becbce7938d612f5cf3720ddf6743b0d348f237d25b2acc5888f82ae82e",
+    "release-example-002/codeql-vulnerable.sarif": "e975c1c3c5a1acbdc2d06a08d99502de4ae4dd01400ac98c212e698e343af550",
+    "release-example-002/operational.log": "13217a4f70689259cf7401a29f2dd57038a118e4c95ce315e3bcb9aef03e2205",
+    "release-example-002/report.json": "98ba6de24c0d48ed3d6bfe6a8e3b8070c273e20ea29adb52e9beb4bd7077b960",
+    "release-example-002/semgrep-secure.json": "f37a3987a7d03e77b2f167990c402007887d931906a579ef851060f5d47fafd8",
+    "release-example-002/semgrep-vulnerable.json": "49fd166af47c7f44408b5b59c89e613a39accc6ba31037c244ce70808579cd4f",
+    "release-example-002/zap.json": "3d943ab2aad4df82c51543322368f7744c73074582230beff1365cb1cce789e2"
+  }
+}

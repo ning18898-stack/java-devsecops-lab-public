@@ -1,0 +1,23 @@
+flowchart LR
+  subgraph Lab["Local teaching boundary"]
+    V["Spring Boot vulnerable-app"] --> M[("Isolated MySQL / H2")]
+    S["secure-app + regression tests"] --> M
+    V --> SG["Semgrep rules"]
+    V --> QL["CodeQL data flow"]
+    S --> SG
+    S --> QL
+    Z["ZAP passive: five GET requests"] --> G["Scope and identity gateway"]
+    G --> V
+    SG --> P["Python orchestration"]
+    QL --> P
+    Z --> P
+    P --> R["JSON 1.0 + evidence hashes"]
+    R --> F["FastAPI import and audit"]
+    F --> D[("SQLite immutable snapshots")]
+    F --> UI["Vue observation dashboard"]
+  end
+  C["GitHub Actions: build and test"] -.-> S
+  C -.-> SG
+  C -.-> F
+  C -.-> UI
+  C -.-> L["Manual CodeQL license gate / isolated ZAP"]

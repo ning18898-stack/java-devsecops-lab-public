@@ -1,0 +1,12 @@
+erDiagram
+    ScanRun ||--o{ Observation : reports
+    ScanRun ||--o{ Evidence : snapshots
+    Finding ||--o{ FindingKey : tracks
+    FindingKey ||--o{ Observation : identifies
+    Observation }o--o{ Evidence : references
+    Finding ||--o{ FindingHistory : audits
+    Finding ||--o{ Repair : declares
+    Finding ||--o{ Verification : reviews
+    Repair ||--o{ Verification : verifies
+    ScanRun ||--o{ Verification : supports
+    Verification }o--o{ Evidence : cites

@@ -1,0 +1,8 @@
+server:
+  address: 127.0.0.1
+lab:
+  vuln001:
+    enabled: ${VULN001_ENABLED:false}
+    url: ${VULN001_DB_URL:jdbc:mysql://127.0.0.1:13308/lab_vuln001?allowMultiQueries=false&connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true}
+    username: vuln001_reader
+    password: ${VULN001_DB_PASSWORD:}

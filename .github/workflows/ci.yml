@@ -1,0 +1,156 @@
+name: Lab CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: lab-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  delivery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11.9'
+      - run: python scripts/phase6/bootstrap.py actionlint
+      - run: python scripts/phase6/ci.py workflows
+      - run: python scripts/phase6/ci.py hygiene
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: delivery-reviewed-results
+          path: artifacts/phase6-public/
+          retention-days: 7
+          if-no-files-found: error
+  java:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, verified official ref
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.11.9'
+      - name: Download checksum-locked Temurin 17.0.20.1+1
+        id: jdk
+        run: python scripts/phase6/bootstrap.py jdk-archive
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: jdkfile
+          java-version: '17.0.20' # SemVer cache label; archive fixes the actual 17.0.20.1+1 runtime.
+          jdk-file: ${{ steps.jdk.outputs.archive }}
+          cache: maven
+          cache-dependency-path: 'apps/*/pom.xml'
+      - run: python scripts/phase6/ci.py java
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: java-reviewed-results
+          path: artifacts/phase6-public/
+          retention-days: 7
+          if-no-files-found: error
+  python:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11.9'
+      - run: python scripts/phase6/ci.py python
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: python-${{ matrix.os }}-reviewed-results
+          path: artifacts/phase6-public/
+          retention-days: 7
+          if-no-files-found: error
+  backend:
+    # The original suite contains an actual Windows junction test. Run every assertion.
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11.9'
+          cache: pip
+          cache-dependency-path: dashboard/backend/requirements.txt
+      - run: python -m pip install -r dashboard/backend/requirements.txt
+      - run: python scripts/phase6/ci.py backend
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: backend-reviewed-results
+          path: artifacts/phase6-public/
+          retention-days: 7
+          if-no-files-found: error
+  frontend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.12.0'
+          cache: npm
+          cache-dependency-path: dashboard/frontend/package-lock.json
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11.9'
+      - run: python scripts/phase6/ci.py frontend
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: frontend-reviewed-results
+          path: artifacts/phase6-public/
+          retention-days: 7
+          if-no-files-found: error
+  semgrep:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11.9'
+          cache: pip
+          cache-dependency-path: scripts/phase6/semgrep-linux.lock.txt
+      - run: python -m pip install -r scripts/phase6/semgrep-linux.lock.txt
+      - run: python scripts/phase6/ci.py semgrep
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: semgrep-reviewed-results
+          path: artifacts/phase6-public/
+          retention-days: 7
+          if-no-files-found: error

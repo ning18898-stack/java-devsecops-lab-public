@@ -1,0 +1,5 @@
+name: java-devsecops-lab/static-analysis
+version: 0.1.0
+extractor: java
+dependencies:
+  codeql/java-all: 9.3.1

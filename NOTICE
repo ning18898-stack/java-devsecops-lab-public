@@ -1,0 +1,9 @@
+Java DevSecOps Lab — independently reviewed public source snapshot
+Copyright 2026 ning18898-stack
+
+Project-authored source, documentation, queries, rules, diagrams and reviewed examples are
+licensed under Apache License 2.0. Third-party materials retain their original terms.
+This source distribution includes Maven Wrapper scripts with Apache Software Foundation
+license notices, which are retained in those files. Dependency licensing and binary
+redistribution obligations are described in docs/release/THIRD_PARTY.md.
+The original private development history and private operational evidence are withheld.

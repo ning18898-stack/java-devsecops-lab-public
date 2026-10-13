@@ -1,0 +1,52 @@
+{
+  "checkout": {
+    "tag": "v6",
+    "commit": "d23441a48e516b6c34aea4fa41551a30e30af803",
+    "source": "https://github.com/actions/checkout/tree/d23441a48e516b6c34aea4fa41551a30e30af803",
+    "runtime": [
+      "using: node24"
+    ],
+    "license": "MIT",
+    "action_yml_sha256": "d59219cb79590abdb877deaa14e3b65a00c05318bf5a6f3b989b9162b5d08c35"
+  },
+  "setup-java": {
+    "tag": "v5",
+    "commit": "b6effb05e454b25005698d916606bdc6ffcbf961",
+    "source": "https://github.com/actions/setup-java/tree/b6effb05e454b25005698d916606bdc6ffcbf961",
+    "runtime": [
+      "using: 'node24'"
+    ],
+    "license": "MIT",
+    "action_yml_sha256": "54e5e8ef36785d9800698a0889ed17bacbdeb9f9fedcf3bbb0999b722c230bae"
+  },
+  "setup-python": {
+    "tag": "v6",
+    "commit": "ece7cb06caefa5fff74198d8649806c4678c61a1",
+    "source": "https://github.com/actions/setup-python/tree/ece7cb06caefa5fff74198d8649806c4678c61a1",
+    "runtime": [
+      "using: 'node24'"
+    ],
+    "license": "MIT",
+    "action_yml_sha256": "a95cf5ade72699eb8a044e77a74b1e127a223759f13c42a1068bb9cf918b8830"
+  },
+  "setup-node": {
+    "tag": "v6",
+    "commit": "249970729cb0ef3589644e2896645e5dc5ba9c38",
+    "source": "https://github.com/actions/setup-node/tree/249970729cb0ef3589644e2896645e5dc5ba9c38",
+    "runtime": [
+      "using: 'node24'"
+    ],
+    "license": "MIT",
+    "action_yml_sha256": "ad45f1922115116fb4706651d0a9262332bc4e4f11eb2021e09789dd1af18085"
+  },
+  "upload-artifact": {
+    "tag": "v4",
+    "commit": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "source": "https://github.com/actions/upload-artifact/tree/ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "runtime": [
+      "using: 'node20'"
+    ],
+    "license": "MIT",
+    "action_yml_sha256": "29b21270ff44638a165ea12abb4481796770c629e513217af7b4df1aa3821177"
+  }
+}

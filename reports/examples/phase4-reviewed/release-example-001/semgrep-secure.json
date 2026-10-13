@@ -1,0 +1,104 @@
+{
+  "version": "1.180.0",
+  "results": [],
+  "errors": [],
+  "paths": {
+    "scanned": [
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\LegacySecurityConfiguration.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\SecureLabApplication.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln001\\LabArticle.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln001\\LabArticleMapper.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln001\\LabConfiguration.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln001\\LabController.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln001\\LabDatabase.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln001\\LabGuard.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln001\\LabService.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorArticle.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorArticleController.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorAuthController.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorConfiguration.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorDatabase.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorErrors.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorFailure.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorMapper.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorPrincipal.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorRequest.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorSecurity.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorService.java",
+      "apps\\secure-app\\src\\main\\java\\com\\example\\securelab\\vuln002\\IdorUser.java"
+    ]
+  },
+  "time": {
+    "rules": [],
+    "rules_parse_time": 0.020752906799316406,
+    "profiling_times": {
+      "config_time": 0.23353004455566406,
+      "core_time": 4.986600160598755,
+      "ignores_time": 0.0,
+      "total_time": 5.25054144859314
+    },
+    "parsing_time": {
+      "total_time": 0.0,
+      "per_file_time": {
+        "mean": 0.0,
+        "std_dev": 0.0
+      },
+      "very_slow_stats": {
+        "time_ratio": 0.0,
+        "count_ratio": 0.0
+      },
+      "very_slow_files": []
+    },
+    "scanning_time": {
+      "total_time": 0.34260129928588867,
+      "per_file_time": {
+        "mean": 0.01557278633117676,
+        "std_dev": 2.2463341245136022e-05
+      },
+      "very_slow_stats": {
+        "time_ratio": 0.0,
+        "count_ratio": 0.0
+      },
+      "very_slow_files": []
+    },
+    "matching_time": {
+      "total_time": 0.0,
+      "per_file_and_rule_time": {
+        "mean": 0.0,
+        "std_dev": 0.0
+      },
+      "very_slow_stats": {
+        "time_ratio": 0.0,
+        "count_ratio": 0.0
+      },
+      "very_slow_rules_on_files": []
+    },
+    "tainting_time": {
+      "total_time": 0.0,
+      "per_def_and_rule_time": {
+        "mean": 0.0,
+        "std_dev": 0.0
+      },
+      "very_slow_stats": {
+        "time_ratio": 0.0,
+        "count_ratio": 0.0
+      },
+      "very_slow_rules_on_defs": []
+    },
+    "fixpoint_timeouts": [],
+    "prefiltering": {
+      "project_level_time": 0.0,
+      "file_level_time": 0.0,
+      "rules_with_project_prefilters_ratio": 0.0,
+      "rules_with_file_prefilters_ratio": 0.5,
+      "rules_selected_ratio": 0.5227272727272727,
+      "rules_matched_ratio": 0.5227272727272727
+    },
+    "targets": [],
+    "total_bytes": 0,
+    "max_memory_bytes": 174787392
+  },
+  "engine_requested": "OSS",
+  "skipped_rules": [],
+  "profiling_results": []
+}

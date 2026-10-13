@@ -1,0 +1,17 @@
+{
+  "mode": "passive-baseline",
+  "target_id": "vulnerable-baseline",
+  "protocol": "http",
+  "port": 8080,
+  "paths": ["/actuator/health", "/login", "/api/articles", "/api/users", "/api/csrf"],
+  "excluded_paths": ["/logout", "/api/labs/", "/register"],
+  "methods": ["GET"],
+  "spider": false,
+  "active_scan": false,
+  "follow_redirects": false,
+  "timeout_seconds": 300,
+  "max_requests": 5,
+  "max_response_bytes": 1048576,
+  "scan_memory": "2g",
+  "scan_cpus": "2"
+}

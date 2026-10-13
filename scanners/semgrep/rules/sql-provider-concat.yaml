@@ -1,0 +1,14 @@
+rules:
+  - id: java-sql-provider-concat
+    languages: [java]
+    severity: ERROR
+    message: SQL text is concatenated with a nonliteral value. Use MyBatis bound parameters.
+    metadata:
+      cwe: CWE-89
+      scope: SQL-looking Java string concatenation; syntax heuristic, not whole-program taint
+    patterns:
+      - pattern: $SQL + $INPUT
+      - metavariable-regex:
+          metavariable: $SQL
+          regex: '(?is)^"\s*(SELECT|UPDATE|INSERT|DELETE)\b.*'
+      - pattern-not: $SQL + "..."

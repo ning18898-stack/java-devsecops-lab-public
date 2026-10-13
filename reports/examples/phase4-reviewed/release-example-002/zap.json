@@ -1,0 +1,90 @@
+{
+  "@programName": "ZAP",
+  "@version": "2.17.0",
+  "@generated": "Mon, 12 Oct 2026 11:18:35",
+  "created": "2000-01-01T11:18:35.778064311Z",
+  "insights": [
+    {
+      "level": "Low",
+      "reason": "Warning",
+      "site": "",
+      "key": "insight.log.error",
+      "description": "ZAP errors logged - see the zap.log file for details",
+      "statistic": "6"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "",
+      "key": "insight.network.failure",
+      "description": "Percentage of network failures",
+      "statistic": "58"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "htt[LOCAL_PATH]",
+      "key": "insight.code.2xx",
+      "description": "Percentage of responses with status code 2xx",
+      "statistic": "20"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "htt[LOCAL_PATH]",
+      "key": "insight.code.4xx",
+      "description": "Percentage of responses with status code 4xx",
+      "statistic": "80"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "htt[LOCAL_PATH]",
+      "key": "insight.endpoint.ctype.application/json",
+      "description": "Percentage of endpoints with content type application/json",
+      "statistic": "80"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "htt[LOCAL_PATH]",
+      "key": "insight.endpoint.ctype.application/vnd.spring-boot.actuator.v3+json",
+      "description": "Percentage of endpoints with content type application/vnd.spring-boot.actuator.v3+json",
+      "statistic": "20"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "htt[LOCAL_PATH]",
+      "key": "insight.endpoint.method.GET",
+      "description": "Percentage of endpoints with method GET",
+      "statistic": "100"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "htt[LOCAL_PATH]",
+      "key": "insight.endpoint.total",
+      "description": "Count of total endpoints",
+      "statistic": "5"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "htt[LOCAL_PATH]",
+      "key": "insight.response.slow",
+      "description": "Percentage of slow responses",
+      "statistic": "20"
+    }
+  ],
+  "site": [
+    {
+      "@name": "htt[LOCAL_PATH]",
+      "@host": "172.20.0.2",
+      "@port": "8080",
+      "@ssl": "false",
+      "alerts": []
+    }
+  ],
+  "sequences": []
+}

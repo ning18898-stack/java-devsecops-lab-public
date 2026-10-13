@@ -1,0 +1,7 @@
+lab:
+  vuln002:
+    enabled: ${VULN002_ENABLED:false}
+spring:
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true

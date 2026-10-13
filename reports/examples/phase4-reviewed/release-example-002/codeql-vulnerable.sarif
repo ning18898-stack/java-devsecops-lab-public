@@ -1,0 +1,2567 @@
+{
+  "$schema": "http[LOCAL_PATH]",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "CodeQL",
+          "organization": "GitHub",
+          "semanticVersion": "2.27.2",
+          "notifications": [
+            {
+              "id": "java/baseline/expected-extracted-files",
+              "name": "java/baseline/expected-extracted-files",
+              "shortDescription": {
+                "text": "Expected extracted files"
+              },
+              "fullDescription": {
+                "text": "Files appearing in the source archive that are expected to be extracted."
+              },
+              "defaultConfiguration": {
+                "enabled": true
+              },
+              "properties": {
+                "tags": [
+                  "expected-extracted-files",
+                  "telemetry"
+                ]
+              }
+            },
+            {
+              "id": "cli/file-coverage-baseline",
+              "name": "cli/file-coverage-baseline",
+              "shortDescription": {
+                "text": "File coverage baseline telemetry"
+              },
+              "fullDescription": {
+                "text": "File coverage baseline telemetry"
+              },
+              "defaultConfiguration": {
+                "enabled": true
+              }
+            },
+            {
+              "id": "cli/platform",
+              "name": "cli/platform",
+              "shortDescription": {
+                "text": "Platform"
+              },
+              "fullDescription": {
+                "text": "Platform"
+              },
+              "defaultConfiguration": {
+                "enabled": true
+              }
+            },
+            {
+              "id": "cli/build-mode",
+              "name": "cli/build-mode",
+              "shortDescription": {
+                "text": "Database build mode"
+              },
+              "fullDescription": {
+                "text": "Database build mode"
+              },
+              "defaultConfiguration": {
+                "enabled": true
+              }
+            },
+            {
+              "id": "java/extractor/summary",
+              "name": "java/extractor/summary",
+              "shortDescription": {
+                "text": "Java extractor telemetry"
+              },
+              "fullDescription": {
+                "text": "Java extractor telemetry"
+              },
+              "defaultConfiguration": {
+                "enabled": true
+              }
+            }
+          ],
+          "rules": [
+            {
+              "id": "java/lab-mybatis-provider-sqli",
+              "name": "java/lab-mybatis-provider-sqli",
+              "shortDescription": {
+                "text": "Request input in MyBatis provider SQL"
+              },
+              "fullDescription": {
+                "text": "Tracks request parameters into annotation-selected provider SQL text."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-089"
+                ],
+                "description": "Tracks request parameters into annotation-selected provider SQL text.",
+                "id": "java/lab-mybatis-provider-sqli",
+                "kind": "path-problem",
+                "name": "Request input in MyBatis provider SQL",
+                "precision": "high",
+                "problem.severity": "error",
+                "security-severity": "8.1"
+              }
+            },
+            {
+              "id": "java/lab-idor-update-owner",
+              "name": "java/lab-idor-update-owner",
+              "shortDescription": {
+                "text": "Lab article UPDATE lacks owner predicate"
+              },
+              "fullDescription": {
+                "text": "Experiment policy check for id/run-scoped MyBatis lab_articles UPDATE."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-862"
+                ],
+                "description": "Experiment policy check for id/run-scoped MyBatis lab_articles UPDATE.",
+                "id": "java/lab-idor-update-owner",
+                "kind": "problem",
+                "name": "Lab article UPDATE lacks owner predicate",
+                "precision": "high",
+                "problem.severity": "warning"
+              }
+            },
+            {
+              "id": "java/lab-idor-service-owner",
+              "name": "java/lab-idor-service-owner",
+              "shortDescription": {
+                "text": "Lab write lacks recognized owner authorization"
+              },
+              "fullDescription": {
+                "text": "Checks the experiment's fail-closed owner inequality and trusted identity passed to UPDATE."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "external/cwe/cwe-862"
+                ],
+                "description": "Checks the experiment's fail-closed owner inequality and trusted identity passed to UPDATE.",
+                "id": "java/lab-idor-service-owner",
+                "kind": "problem",
+                "name": "Lab write lacks recognized owner authorization",
+                "precision": "medium",
+                "problem.severity": "warning"
+              }
+            }
+          ]
+        },
+        "extensions": [
+          {
+            "name": "java-devsecops-lab/static-analysis",
+            "semanticVersion": "0.1.0+94b531a5ffe0d9820ddf7af7aafb9707735110db",
+            "locations": [
+              {
+                "uri": "fil[LOCAL_PATH]",
+                "description": {
+                  "text": "The QL pack root directory."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackRoot"
+                  ]
+                }
+              },
+              {
+                "uri": "fil[LOCAL_PATH]",
+                "description": {
+                  "text": "The QL pack definition file."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackDefinitionFile"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "codeql/java-all",
+            "semanticVersion": "9.3.1+6e9f9e38390175c41b99070a423c875f450759ca",
+            "locations": [
+              {
+                "uri": "fil[LOCAL_PATH]",
+                "description": {
+                  "text": "The QL pack root directory."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackRoot"
+                  ]
+                }
+              },
+              {
+                "uri": "fil[LOCAL_PATH]",
+                "description": {
+                  "text": "The QL pack definition file."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackDefinitionFile"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "codeql/threat-models",
+            "semanticVersion": "1.0.58+6e9f9e38390175c41b99070a423c875f450759ca",
+            "locations": [
+              {
+                "uri": "fil[LOCAL_PATH]",
+                "description": {
+                  "text": "The QL pack root directory."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackRoot"
+                  ]
+                }
+              },
+              {
+                "uri": "fil[LOCAL_PATH]",
+                "description": {
+                  "text": "The QL pack definition file."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackDefinitionFile"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "invocations": [
+        {
+          "toolExecutionNotifications": [
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorArticle.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 6
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabService.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 2
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorArticleController.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 7
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/BaselineApiTest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 8
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorAuthTest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 9
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabGuard.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 10
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/controller/AuthController.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 11
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/entity/Role.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 12
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorErrors.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 13
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/ErrorHandlingTest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 14
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/lab/vuln001/LabQueryTest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 15
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/dto/UpdateUserRequest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 16
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/entity/User.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 17
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/dto/MaxUtf8BytesValidator.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 18
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/lab/vuln001/LabDisabledTest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 19
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/controller/UserController.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 20
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorSecurity.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 21
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/exception/ApiException.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 22
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorPrincipal.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 23
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorRequest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 24
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/dto/ArticleRequest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 25
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/dto/RegisterRequest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 26
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/dto/ArticleResponse.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 27
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/exception/ApiError.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 28
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabConfiguration.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 29
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorArticleTest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 30
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorUser.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 31
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorMapper.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 4
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorTestData.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 32
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorGateTest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 33
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorFailure.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 34
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorDisabledTest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 35
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/exception/ApiExceptionHandler.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 36
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/mapper/UserMapper.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 37
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/security/SecurityResponseWriter.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 38
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/security/LabPrincipal.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 39
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/test/java/com/example/devsecopslab/lab/vuln001/LabGateTest.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 40
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/service/ArticleService.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 41
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/UnsafeSqlProvider.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 0
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/security/LabUserDetailsService.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 42
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/mapper/ArticleMapper.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 43
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/controller/ArticleController.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 44
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorConfiguration.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 45
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabArticle.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 46
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorService.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 5
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/dto/MaxUtf8Bytes.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 47
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/entity/Article.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 48
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabController.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 1
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabArticleMapper.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 49
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorAuthController.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 50
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/dto/UserResponse.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 51
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/LabApplication.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 52
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/service/UserService.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 53
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabDatabase.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 3
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/config/SecurityConfig.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 54
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorDatabase.java",
+                      "uriBaseId": "%SRCROOT%",
+                      "index": 55
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "descriptor": {
+                "id": "java/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "timeUtc": "2000-01-01T09:15:27.925820600Z",
+              "descriptor": {
+                "id": "cli/file-coverage-baseline",
+                "index": 1
+              },
+              "properties": {
+                "attributes": {
+                  "durationMilliseconds": 2825
+                },
+                "visibility": {
+                  "statusPage": false,
+                  "telemetry": true
+                }
+              }
+            },
+            {
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "timeUtc": "2000-01-01T09:15:27.929823300Z",
+              "descriptor": {
+                "id": "cli/platform",
+                "index": 2
+              },
+              "properties": {
+                "attributes": {
+                  "arch": "amd64",
+                  "name": "Windows 11",
+                  "version": "10.0"
+                },
+                "visibility": {
+                  "statusPage": false,
+                  "telemetry": true
+                }
+              }
+            },
+            {
+              "message": {
+                "text": ""
+              },
+              "level": "none",
+              "timeUtc": "2000-01-01T09:15:27.937826400Z",
+              "descriptor": {
+                "id": "cli/build-mode",
+                "index": 3
+              },
+              "properties": {
+                "attributes": {
+                  "buildMode": "manual"
+                },
+                "visibility": {
+                  "statusPage": false,
+                  "telemetry": true
+                }
+              }
+            },
+            {
+              "message": {
+                "text": "Internal telemetry for the Java extractor.\n\nNo action needed.",
+                "markdown": "Internal telemetry for the Java extractor.\n\nNo action needed."
+              },
+              "level": "note",
+              "timeUtc": "2000-01-01T09:15:43.578971400Z",
+              "descriptor": {
+                "id": "java/extractor/summary",
+                "index": 4
+              },
+              "properties": {
+                "attributes": {
+                  "java_vendor": "Eclipse Adoptium",
+                  "java_version": "17.0.20.1"
+                },
+                "visibility": {
+                  "statusPage": false,
+                  "telemetry": true
+                }
+              }
+            }
+          ],
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/UnsafeSqlProvider.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 0
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabController.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 1
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabService.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 2
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabDatabase.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 3
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorMapper.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 4
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorService.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 5
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorArticle.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 6
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorArticleController.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 7
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/BaselineApiTest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 8
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorAuthTest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 9
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabGuard.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 10
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/controller/AuthController.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 11
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/entity/Role.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 12
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorErrors.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 13
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/ErrorHandlingTest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 14
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/lab/vuln001/LabQueryTest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 15
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/dto/UpdateUserRequest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 16
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/entity/User.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 17
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/dto/MaxUtf8BytesValidator.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 18
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/lab/vuln001/LabDisabledTest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 19
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/controller/UserController.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 20
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorSecurity.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 21
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/exception/ApiException.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 22
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorPrincipal.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 23
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorRequest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 24
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/dto/ArticleRequest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 25
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/dto/RegisterRequest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 26
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/dto/ArticleResponse.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 27
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/exception/ApiError.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 28
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabConfiguration.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 29
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorArticleTest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 30
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorUser.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 31
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorTestData.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 32
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorGateTest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 33
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorFailure.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 34
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/lab/vuln002/IdorDisabledTest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 35
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/exception/ApiExceptionHandler.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 36
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/mapper/UserMapper.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 37
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/security/SecurityResponseWriter.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 38
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/security/LabPrincipal.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 39
+          }
+        },
+        {
+          "location": {
+            "uri": "src/test/java/com/example/devsecopslab/lab/vuln001/LabGateTest.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 40
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/service/ArticleService.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 41
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/security/LabUserDetailsService.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 42
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/mapper/ArticleMapper.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 43
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/controller/ArticleController.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 44
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorConfiguration.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 45
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabArticle.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 46
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/dto/MaxUtf8Bytes.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 47
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/entity/Article.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 48
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabArticleMapper.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 49
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorAuthController.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 50
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/dto/UserResponse.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 51
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/LabApplication.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 52
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/service/UserService.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 53
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/config/SecurityConfig.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 54
+          }
+        },
+        {
+          "location": {
+            "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorDatabase.java",
+            "uriBaseId": "%SRCROOT%",
+            "index": 55
+          }
+        }
+      ],
+      "results": [
+        {
+          "ruleId": "java/lab-mybatis-provider-sqli",
+          "ruleIndex": 0,
+          "rule": {
+            "id": "java/lab-mybatis-provider-sqli",
+            "index": 0
+          },
+          "message": {
+            "text": "Request input reaches provider SQL text through the annotated MyBatis parameter map."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/UnsafeSqlProvider.java",
+                  "uriBaseId": "%SRCROOT%",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 16,
+                  "endLine": 11,
+                  "endColumn": 69
+                },
+                "contextRegion": {
+                  "startLine": 8,
+                  "endLine": 13,
+                  "snippet": {
+                    "text": "    public static String search(Map<String, Object> parameters) {\n        // INTENTIONAL VULN-001: input becomes SQL syntax. Never use this in baseline APIs.\n        return \"SELECT id, title, visibility FROM lab_articles WHERE visibility = 'public' AND title = '\"\n                + parameters.get(\"query\") + \"' ORDER BY id LIMIT 10\";\n    }\n}\n"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "cf1152b6aed4db15:1",
+            "primaryLocationStartColumnFingerprint": "7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabController.java",
+                            "uriBaseId": "%SRCROOT%",
+                            "index": 1
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "startColumn": 36,
+                            "endColumn": 120
+                          },
+                          "contextRegion": {
+                            "startLine": 27,
+                            "endLine": 31,
+                            "snippet": {
+                              "text": "\n    @GetMapping(\"/articles/search\")\n    public List<LabArticle> search(@RequestParam(value = \"q\", required = false) @NotBlank @Size(max = 200) String query) {\n        return service.search(query);\n    }\n"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "query : String"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabController.java",
+                            "uriBaseId": "%SRCROOT%",
+                            "index": 1
+                          },
+                          "region": {
+                            "startLine": 30,
+                            "startColumn": 31,
+                            "endColumn": 36
+                          },
+                          "contextRegion": {
+                            "startLine": 28,
+                            "endLine": 32,
+                            "snippet": {
+                              "text": "    @GetMapping(\"/articles/search\")\n    public List<LabArticle> search(@RequestParam(value = \"q\", required = false) @NotBlank @Size(max = 200) String query) {\n        return service.search(query);\n    }\n}\n"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "query : String"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabService.java",
+                            "uriBaseId": "%SRCROOT%",
+                            "index": 2
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "startColumn": 36,
+                            "endColumn": 48
+                          },
+                          "contextRegion": {
+                            "startLine": 8,
+                            "endLine": 11,
+                            "snippet": {
+                              "text": "    public LabService(LabDatabase database) { this.database = database; }\n\n    public List<LabArticle> search(String query) { return database.search(query); }\n}\n"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "query : String"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabService.java",
+                            "uriBaseId": "%SRCROOT%",
+                            "index": 2
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "startColumn": 75,
+                            "endColumn": 80
+                          },
+                          "contextRegion": {
+                            "startLine": 8,
+                            "endLine": 11,
+                            "snippet": {
+                              "text": "    public LabService(LabDatabase database) { this.database = database; }\n\n    public List<LabArticle> search(String query) { return database.search(query); }\n}\n"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "query : String"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabDatabase.java",
+                            "uriBaseId": "%SRCROOT%",
+                            "index": 3
+                          },
+                          "region": {
+                            "startLine": 60,
+                            "startColumn": 36,
+                            "endColumn": 48
+                          },
+                          "contextRegion": {
+                            "startLine": 58,
+                            "endLine": 62,
+                            "snippet": {
+                              "text": "    }\n\n    public List<LabArticle> search(String query) {\n        try (var session = [REDACTED] {\n            return session.getMapper(LabArticleMapper.class).search(query);\n"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "query : String"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabDatabase.java",
+                            "uriBaseId": "%SRCROOT%",
+                            "index": 3
+                          },
+                          "region": {
+                            "startLine": 62,
+                            "startColumn": 69,
+                            "endColumn": 74
+                          },
+                          "contextRegion": {
+                            "startLine": 60,
+                            "endLine": 64,
+                            "snippet": {
+                              "text": "    public List<LabArticle> search(String query) {\n        try (var session = [REDACTED] {\n            return session.getMapper(LabArticleMapper.class).search(query);\n        }\n    }\n"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "query : String"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/UnsafeSqlProvider.java",
+                            "uriBaseId": "%SRCROOT%",
+                            "index": 0
+                          },
+                          "region": {
+                            "startLine": 11,
+                            "startColumn": 19,
+                            "endColumn": 42
+                          },
+                          "contextRegion": {
+                            "startLine": 9,
+                            "endLine": 13,
+                            "snippet": {
+                              "text": "        // INTENTIONAL VULN-001: input becomes SQL syntax. Never use this in baseline APIs.\n        return \"SELECT id, title, visibility FROM lab_articles WHERE visibility = 'public' AND title = '\"\n                + parameters.get(\"query\") + \"' ORDER BY id LIMIT 10\";\n    }\n}\n"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "get(...) : Object"
+                        }
+                      },
+                      "taxa": [
+                        {
+                          "id": "Config",
+                          "properties": {
+                            "CodeQL/DataflowRole": "step"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/UnsafeSqlProvider.java",
+                            "uriBaseId": "%SRCROOT%",
+                            "index": 0
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "startColumn": 16,
+                            "endLine": 11,
+                            "endColumn": 69
+                          },
+                          "contextRegion": {
+                            "startLine": 8,
+                            "endLine": 13,
+                            "snippet": {
+                              "text": "    public static String search(Map<String, Object> parameters) {\n        // INTENTIONAL VULN-001: input becomes SQL syntax. Never use this in baseline APIs.\n        return \"SELECT id, title, visibility FROM lab_articles WHERE visibility = 'public' AND title = '\"\n                + parameters.get(\"query\") + \"' ORDER BY id LIMIT 10\";\n    }\n}\n"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "... + ..."
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/com/example/devsecopslab/lab/vuln001/LabController.java",
+                  "uriBaseId": "%SRCROOT%",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 36,
+                  "endColumn": 120
+                },
+                "contextRegion": {
+                  "startLine": 27,
+                  "endLine": 31,
+                  "snippet": {
+                    "text": "\n    @GetMapping(\"/articles/search\")\n    public List<LabArticle> search(@RequestParam(value = \"q\", required = false) @NotBlank @Size(max = 200) String query) {\n        return service.search(query);\n    }\n"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "java/lab-idor-update-owner",
+          "ruleIndex": 1,
+          "rule": {
+            "id": "java/lab-idor-update-owner",
+            "index": 1
+          },
+          "message": {
+            "text": "Owner-only lab write policy requires a bound user_id predicate in the UPDATE WHERE clause."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorMapper.java",
+                  "uriBaseId": "%SRCROOT%",
+                  "index": 4
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 5,
+                  "endColumn": 140
+                },
+                "contextRegion": {
+                  "startLine": 8,
+                  "endLine": 12,
+                  "snippet": {
+                    "text": "    @Select(\"SELECT id,user_id AS userId,title,content,created_at AS createdAt,updated_at AS updatedAt,run_id AS runId FROM lab_articles WHERE id=#{id} AND run_id=#{runId}\")\r\n    IdorArticle find(@Param(\"id\") long id, @Param(\"runId\") String runId);\r\n    @Update(\"UPDATE lab_articles SET title=#{title},content=#{content},updated_at=CURRENT_TIMESTAMP(6) WHERE id=#{id} AND run_id=#{runId}\")\r\n    int update(@Param(\"id\") long id,@Param(\"runId\") String runId,\r\n            @Param(\"title\") String title,@Param(\"content\") String content);\r\n"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e706aee116cd2b3b:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          }
+        },
+        {
+          "ruleId": "java/lab-idor-service-owner",
+          "ruleIndex": 2,
+          "rule": {
+            "id": "java/lab-idor-service-owner",
+            "index": 2
+          },
+          "message": {
+            "text": "Lab write lacks the recognized controlling owner guard and principal identity argument; inspect authorization."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/com/example/devsecopslab/lab/vuln002/IdorService.java",
+                  "uriBaseId": "%SRCROOT%",
+                  "index": 5
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 25,
+                  "endColumn": 97
+                },
+                "contextRegion": {
+                  "startLine": 13,
+                  "endLine": 17,
+                  "snippet": {
+                    "text": "            var original=require(mapper.find(id,principal.getRunId()));\r\n            // Intentional VULN-002: no object ownership check.\r\n            int changed=mapper.update(id,principal.getRunId(),request.title(),request.content());\r\n            if(changed==0) {\r\n                // Preserve correct idempotent PUT behavior with MySQL affected-row settings.\r\n"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "3ab4c9b9dba783de:1",
+            "primaryLocationStartColumnFingerprint": "12"
+          }
+        }
+      ],
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "semmle.formatSpecifier": "sarif-latest"
+      }
+    }
+  ]
+}

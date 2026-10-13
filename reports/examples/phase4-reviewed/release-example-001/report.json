@@ -1,0 +1,390 @@
+{
+  "schema_version": "1.0",
+  "run_id": "release-example-001",
+  "source_revision": "94b531a5ffe0d9820ddf7af7aafb9707735110db",
+  "source_fingerprint": "df3783ca16db7e90c48cda2e1edbd669c1038664eb233cef0471068a034a2395",
+  "target_id": "vulnerable-baseline",
+  "tool_versions": {
+    "python": "3.11.9",
+    "jdk": "17.0.20.1+1",
+    "semgrep": "1.180.0",
+    "semgrep_dependency_lock": "3169757566798982a571af3a040153d817d8b87fa856949c2c3b507c5f241653",
+    "codeql": "2.27.2",
+    "codeql_pack_lock": "a71e36649e4f60ff6a6dc927431e4f71ef4699e42be359ac4060be5e7509167c",
+    "docker": "29.8.2",
+    "zap": "2.17.0",
+    "images": {
+      "zap": "zaproxy/zap-stable@sha256:7aaa659b0d43078febd82e29bad112285c370727e86ab8340444220e17d9f0d2",
+      "zap_version": "2.17.0",
+      "java": "eclipse-temurin@sha256:207ecae0b2b104dfc6dfa763d1e9cd2041cb344800a180e24cb1a28ed533ff90",
+      "python": "python@sha256:090ba77e2958f6af52a5341f788b50b032dd4ca28377d2893dcf1ecbdfdfe203",
+      "java_version": "17.0.20.1+1",
+      "python_version": "3.12.13",
+      "platform": "linux/amd64"
+    }
+  },
+  "started": "2000-01-01T11:07:58.611998+00:00",
+  "timestamp": "2000-01-01T11:15:07.701674+00:00",
+  "ended": "2000-01-01T11:15:07.702346+00:00",
+  "execution_status": "COMPLETED",
+  "dry_run": false,
+  "failure": null,
+  "steps": [
+    {
+      "tool": "semgrep",
+      "execution_status": "COMPLETED",
+      "finding_count": 2,
+      "execution_mode": "actual-execution",
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidence": [
+        "semgrep-vulnerable.json",
+        "semgrep-secure.json"
+      ],
+      "started": "2000-01-01T11:08:34.190660+00:00",
+      "integration_contract": {
+        "vulnerable": {
+          "files": 46,
+          "findings": 2,
+          "status": "PASS"
+        },
+        "secure": {
+          "files": 22,
+          "findings": 0,
+          "status": "PASS"
+        }
+      },
+      "ended": "2000-01-01T11:09:13.398643+00:00"
+    },
+    {
+      "tool": "codeql",
+      "execution_status": "COMPLETED",
+      "finding_count": 3,
+      "execution_mode": "actual-execution",
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidence": [
+        "codeql-vulnerable.sarif",
+        "codeql-secure.sarif"
+      ],
+      "started": "2000-01-01T11:09:13.494763+00:00",
+      "integration_contract": {
+        "vulnerable": {
+          "files": 46,
+          "findings": 3,
+          "status": "PASS"
+        },
+        "secure": {
+          "files": 22,
+          "findings": 0,
+          "status": "PASS"
+        },
+        "without_bridge_findings": 0
+      },
+      "ended": "2000-01-01T11:12:27.541942+00:00"
+    },
+    {
+      "tool": "zap",
+      "execution_status": "COMPLETED",
+      "finding_count": 0,
+      "execution_mode": "actual-execution",
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidence": [
+        "zap.json"
+      ],
+      "started": "2000-01-01T11:12:27.921128+00:00",
+      "ended": "2000-01-01T11:14:28.500004+00:00"
+    }
+  ],
+  "findings": [
+    {
+      "schema_version": "1.0",
+      "run_id": "release-example-001",
+      "source_revision": "94b531a5ffe0d9820ddf7af7aafb9707735110db",
+      "tool": "semgrep",
+      "rule_id": "java-lab-idor-update-scope",
+      "title": "Lab article UPDATE has id/run scope but lacks a bound user_id ownership predicate. Review service authorization too.",
+      "severity": "medium",
+      "confidence": null,
+      "source_location": {
+        "path": "apps/vulnerable-app/src/main/java/com/example/devsecopslab/lab/vuln002/IdorMapper.java",
+        "line": 10
+      },
+      "target_url": null,
+      "evidence_reference": [
+        "semgrep-vulnerable.json"
+      ],
+      "finding_status": "unreviewed",
+      "execution_status": "COMPLETED",
+      "timestamp": "2000-01-01T11:09:13.383101+00:00",
+      "fingerprint": "8287fb81bc5cdf25fffac21b6ea7ef5522413f1df500bd4709e338875e943094",
+      "null_reasons": {
+        "confidence": "Rule metadata does not specify confidence",
+        "target_url": "Static source analysis"
+      },
+      "occurrences": 1,
+      "correlation": "new"
+    },
+    {
+      "schema_version": "1.0",
+      "run_id": "release-example-001",
+      "source_revision": "94b531a5ffe0d9820ddf7af7aafb9707735110db",
+      "tool": "semgrep",
+      "rule_id": "java-sql-provider-concat",
+      "title": "SQL text is concatenated with a nonliteral value. Use MyBatis bound parameters.",
+      "severity": "high",
+      "confidence": null,
+      "source_location": {
+        "path": "apps/vulnerable-app/src/main/java/com/example/devsecopslab/lab/vuln001/UnsafeSqlProvider.java",
+        "line": 10
+      },
+      "target_url": null,
+      "evidence_reference": [
+        "semgrep-vulnerable.json"
+      ],
+      "finding_status": "unreviewed",
+      "execution_status": "COMPLETED",
+      "timestamp": "2000-01-01T11:09:13.383101+00:00",
+      "fingerprint": "b1315fdebd35b51b4b80ce00c5b615a1bb026a1b3f89b68b91481452874ca2be",
+      "null_reasons": {
+        "confidence": "Rule metadata does not specify confidence",
+        "target_url": "Static source analysis"
+      },
+      "occurrences": 1,
+      "correlation": "new"
+    },
+    {
+      "schema_version": "1.0",
+      "run_id": "release-example-001",
+      "source_revision": "94b531a5ffe0d9820ddf7af7aafb9707735110db",
+      "tool": "codeql",
+      "rule_id": "java/lab-idor-service-owner",
+      "title": "Lab write lacks the recognized controlling owner guard and principal identity argument; inspect authorization.",
+      "severity": "medium",
+      "confidence": "medium",
+      "source_location": {
+        "path": "apps/vulnerable-app/src/main/java/com/example/devsecopslab/lab/vuln002/IdorService.java",
+        "line": 15
+      },
+      "target_url": null,
+      "evidence_reference": [
+        "codeql-vulnerable.sarif"
+      ],
+      "finding_status": "unreviewed",
+      "execution_status": "COMPLETED",
+      "timestamp": "2000-01-01T11:12:27.522326+00:00",
+      "fingerprint": "dd22ab4a81fd3fd7ec6b70a1ceb0ecfa5c3bc6b9f6ff0868fa2c4fde4c287028",
+      "null_reasons": {
+        "target_url": "Static source analysis"
+      },
+      "occurrences": 1,
+      "correlation": "new"
+    },
+    {
+      "schema_version": "1.0",
+      "run_id": "release-example-001",
+      "source_revision": "94b531a5ffe0d9820ddf7af7aafb9707735110db",
+      "tool": "codeql",
+      "rule_id": "java/lab-idor-update-owner",
+      "title": "Owner-only lab write policy requires a bound user_id predicate in the UPDATE WHERE clause.",
+      "severity": "medium",
+      "confidence": "high",
+      "source_location": {
+        "path": "apps/vulnerable-app/src/main/java/com/example/devsecopslab/lab/vuln002/IdorMapper.java",
+        "line": 10
+      },
+      "target_url": null,
+      "evidence_reference": [
+        "codeql-vulnerable.sarif"
+      ],
+      "finding_status": "unreviewed",
+      "execution_status": "COMPLETED",
+      "timestamp": "2000-01-01T11:12:27.522326+00:00",
+      "fingerprint": "e547f914318d755294af10596a6f5c9dc903984c7977e621f2681c2f45505d54",
+      "null_reasons": {
+        "target_url": "Static source analysis"
+      },
+      "occurrences": 1,
+      "correlation": "new"
+    },
+    {
+      "schema_version": "1.0",
+      "run_id": "release-example-001",
+      "source_revision": "94b531a5ffe0d9820ddf7af7aafb9707735110db",
+      "tool": "codeql",
+      "rule_id": "java/lab-mybatis-provider-sqli",
+      "title": "Request input reaches provider SQL text through the annotated MyBatis parameter map.",
+      "severity": "high",
+      "confidence": "high",
+      "source_location": {
+        "path": "apps/vulnerable-app/src/main/java/com/example/devsecopslab/lab/vuln001/UnsafeSqlProvider.java",
+        "line": 10
+      },
+      "target_url": null,
+      "evidence_reference": [
+        "codeql-vulnerable.sarif"
+      ],
+      "finding_status": "unreviewed",
+      "execution_status": "COMPLETED",
+      "timestamp": "2000-01-01T11:12:27.522326+00:00",
+      "fingerprint": "f798fc83a7da90f052596dec20424e5fc552e27208160e43c5a6a6d8f7583a6b",
+      "null_reasons": {
+        "target_url": "Static source analysis"
+      },
+      "occurrences": 1,
+      "correlation": "new"
+    }
+  ],
+  "observation_count": 5,
+  "count_completeness": "complete",
+  "independent_vulnerability_count": null,
+  "count_reason": "Tool observations may overlap; no cross-tool independence assumption",
+  "configuration": {
+    "tools": [
+      "semgrep",
+      "codeql",
+      "zap"
+    ],
+    "target": "vulnerable-baseline",
+    "retries": 1,
+    "resume": null,
+    "passive_plan": {
+      "mode": "passive-baseline",
+      "target_id": "vulnerable-baseline",
+      "protocol": "http",
+      "port": 8080,
+      "paths": [
+        "/actuator/health",
+        "/login",
+        "/api/articles",
+        "/api/users",
+        "/api/csrf"
+      ],
+      "excluded_paths": [
+        "/logout",
+        "/api/labs/",
+        "/register"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "spider": false,
+      "active_scan": false,
+      "follow_redirects": false,
+      "timeout_seconds": 300,
+      "max_requests": 5,
+      "max_response_bytes": 1048576,
+      "scan_memory": "2g",
+      "scan_cpus": "2"
+    }
+  },
+  "evidence_manifest": [
+    {
+      "path": "codeql-secure.sarif",
+      "sha256": "c7d54becbce7938d612f5cf3720ddf6743b0d348f237d25b2acc5888f82ae82e"
+    },
+    {
+      "path": "codeql-vulnerable.sarif",
+      "sha256": "e975c1c3c5a1acbdc2d06a08d99502de4ae4dd01400ac98c212e698e343af550"
+    },
+    {
+      "path": "semgrep-secure.json",
+      "sha256": "f37a3987a7d03e77b2f167990c402007887d931906a579ef851060f5d47fafd8"
+    },
+    {
+      "path": "semgrep-vulnerable.json",
+      "sha256": "49fd166af47c7f44408b5b59c89e613a39accc6ba31037c244ce70808579cd4f"
+    },
+    {
+      "path": "zap.json",
+      "sha256": "27b776cf4d637166f0157214b9a06c24e19a2e12d9403042347a3dd0fc120d46"
+    },
+    {
+      "path": "operational.log",
+      "sha256": "13217a4f70689259cf7401a29f2dd57038a118e4c95ce315e3bcb9aef03e2205"
+    }
+  ],
+  "commands": []
+}

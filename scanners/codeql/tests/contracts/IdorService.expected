@@ -1,0 +1,4 @@
+| Test.java:69:9:69:42 | unowned(...) | Lab write lacks the recognized controlling owner guard and principal identity argument; inspect authorization. |
+| Test.java:77:9:77:55 | owned(...) | Lab write lacks the recognized controlling owner guard and principal identity argument; inspect authorization. |
+| Test.java:80:9:80:55 | owned(...) | Lab write lacks the recognized controlling owner guard and principal identity argument; inspect authorization. |
+| Test.java:85:9:85:55 | owned(...) | Lab write lacks the recognized controlling owner guard and principal identity argument; inspect authorization. |
