@@ -358,19 +358,46 @@ def publish(run):
     for path in paths:
         if not path.exists():
             continue
-        content = redact(path.read_text(encoding="utf-8"), run.secrets)
-        # All local absolute locations are private, including XML properties and SARIF URI bases.
-        content = re.sub(r"[A-Za-z]:[\\/][^\s\"<>]*|/(?:home|Users|mnt|opt|usr|tmp|root)/[^\s\"<>]*", "[LOCAL_PATH]", content)
-        content = content.replace(str(ROOT), "[WORKSPACE]")
-        if any(secret in content for secret in run.secrets if len(secret) >= 8):
-            raise ValueError("Public artifact contains credential")
+        def safe_string(value):
+            value = redact(value, run.secrets).replace(str(ROOT), "[WORKSPACE]")
+            return re.sub(r"[A-Za-z]:[\\/][^\s\"<>]*|/(?:home|Users|mnt|opt|usr|tmp|root)/[^\s\"<>]*", "[LOCAL_PATH]", value)
+
+        def safe_data(value):
+            if isinstance(value, str):
+                return safe_string(value)
+            if isinstance(value, list):
+                return [safe_data(item) for item in value]
+            if isinstance(value, dict):
+                result = {}
+                for key, item in value.items():
+                    safe_key = safe_string(key)
+                    if safe_key in result:
+                        raise ValueError("Redaction creates duplicate JSON keys")
+                    result[safe_key] = safe_data(item)
+                return result
+            return value
+
+        raw = path.read_text(encoding="utf-8")
         if path.suffix == ".xml":
-            tree = ET.fromstring(content)
+            tree = ET.fromstring(raw)
             for node in tree.iter():
                 for child in list(node):
                     if child.tag in ("properties", "system-out", "system-err"):
                         node.remove(child)
+                node.attrib = {safe_string(key): safe_string(value) for key, value in node.attrib.items()}
+                if node.text is not None:
+                    node.text = safe_string(node.text)
+                if node.tail is not None:
+                    node.tail = safe_string(node.tail)
             content = ET.tostring(tree, encoding="unicode")
+            ET.fromstring(content)
+        else:
+            # Redact decoded values, then serialize. Editing serialized JSON can consume
+            # the backslash escaping a Windows command's closing quote.
+            content = json.dumps(safe_data(json.loads(raw)), ensure_ascii=False, indent=2) + "\n"
+            json.loads(content)
+        if any(secret in content for secret in run.secrets if len(secret) >= 8):
+            raise ValueError("Public artifact contains credential")
         filename = path.name if path.parent == run.path else path.parent.name + "-" + path.name
         (dest / filename).write_text(content, encoding="utf-8")
     return str(dest)

@@ -1,5 +1,7 @@
 # 独立公开候选的本地准备
 
+本页记录首次本地导出时的状态。公开仓库已按后续授权建立；后续托管验收和产物修复说明见 [HOSTED_VALIDATION.md](HOSTED_VALIDATION.md)。
+
 原开发仓库保持私有；本候选是重新审核的源码导出，使用独立 Git 历史，不是 Fork，不携带原提交、历史标签或私有验收记录。新提交的 author/committer 使用维护者在 GitHub 设置截图中提供的实际 noreply 和 GitHub 用户名。
 
 原七个历史标签被同一份完整 source-manifest.json 替代。CI、阶段保护和 hygiene 检查文件集合及规范 LF 的 SHA-256；snapshot 逐文件复制并 git init，任何分支都不克隆历史。Dashboard 演示片段引用由应用源码重新生成的独立 Git tree，新克隆也可生成该 tree，无需推送自定义 ref。它不是原始开发提交。

@@ -65,6 +65,48 @@ class DeliveryTests(unittest.TestCase):
             for entry in data["evidence_manifest"]:
                 self.assertEqual(ci.sha(ci.FIXTURES / run_id / entry['path']), entry['sha256'])
 
+    def test_publish_preserves_json_with_quoted_windows_commands(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            run = ci.Run(root / 'private', secrets=['actual-secret-value'])
+            command = '--command="D:\\build\\apps\\mvnw.cmd" -B -f "D:\\build\\apps\\pom.xml" clean compile'
+            data = {'source_revision': 'a' * 40, 'exit_code': 0, 'commands': [command],
+                    'nested': [{'secret': 'actual-secret-value', 'valid': True}]}
+            for filename in ('result.json', 'codeql-vulnerable.sarif'):
+                (run.path / filename).write_text(json.dumps(data), encoding='utf-8')
+            with patch.object(ci, 'ROOT', root):
+                dest = Path(ci.publish(run))
+            for filename in ('result.json', 'codeql-vulnerable.sarif'):
+                text = (dest / filename).read_text(encoding='utf-8')
+                public = json.loads(text)
+                self.assertEqual(public['source_revision'], data['source_revision'])
+                self.assertEqual(public['exit_code'], 0)
+                self.assertEqual(public['commands'], ['--command="[LOCAL_PATH]" -B -f "[LOCAL_PATH]" clean compile'])
+                self.assertTrue(public['nested'][0]['valid'])
+                self.assertNotIn('actual-secret-value', text)
+                self.assertNotIn('D:', text)
+
+    def test_publish_preserves_xml_escaping_and_removes_runtime_properties(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            run = ci.Run(root / 'private', secrets=['actual-secret-value'])
+            from xml.etree import ElementTree as ET
+            suite = ET.Element('testsuite', tests='1')
+            ET.SubElement(suite, 'properties').text = 'private runtime metadata'
+            case = ET.SubElement(suite, 'testcase', name='quotes " & values', file='D:\\build\\test.py')
+            ET.SubElement(case, 'system-out').text = 'actual-secret-value'
+            ET.SubElement(case, 'failure').text = 'quoted " D:\\build\\file.py " & actual-secret-value'
+            (run.path / 'backend.xml').write_text(ET.tostring(suite, encoding='unicode'), encoding='utf-8')
+            with patch.object(ci, 'ROOT', root):
+                dest = Path(ci.publish(run))
+            text = (dest / 'backend.xml').read_text(encoding='utf-8')
+            public = ET.fromstring(text)
+            self.assertEqual(public.find('testcase').attrib['name'], 'quotes " & values')
+            self.assertIsNone(public.find('properties'))
+            self.assertIsNone(public.find('testcase/system-out'))
+            self.assertNotIn('actual-secret-value', text)
+            self.assertNotIn('D:', text)
+
     def test_environment_excludes_experiment_overrides(self):
         with patch.dict(ci.os.environ, {"VULN002_ENABLED":"true", "SPRING_PROFILES_ACTIVE":"vuln002-local", "SEMGREP_APP_TOKEN":"do-not-send"}):
             env = ci.environment()
