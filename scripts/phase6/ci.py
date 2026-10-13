@@ -360,7 +360,7 @@ def publish(run):
             continue
         def safe_string(value):
             value = redact(value, run.secrets).replace(str(ROOT), "[WORKSPACE]")
-            return re.sub(r"[A-Za-z]:[\\/][^\s\"<>]*|/(?:home|Users|mnt|opt|usr|tmp|root)/[^\s\"<>]*", "[LOCAL_PATH]", value)
+            return re.sub(r"(?<![A-Za-z0-9])[A-Za-z]:[\\/][^\s\"<>]*|/(?:home|Users|mnt|opt|usr|tmp|root)/[^\s\"<>]*", "[LOCAL_PATH]", value)
 
         def safe_data(value):
             if isinstance(value, str):
@@ -384,7 +384,8 @@ def publish(run):
                 for child in list(node):
                     if child.tag in ("properties", "system-out", "system-err"):
                         node.remove(child)
-                node.attrib = {safe_string(key): safe_string(value) for key, value in node.attrib.items()}
+                # XML attribute names are qualified structure, including namespace URIs.
+                node.attrib = {key: safe_string(value) for key, value in node.attrib.items()}
                 if node.text is not None:
                     node.text = safe_string(node.text)
                 if node.tail is not None:

@@ -71,7 +71,9 @@ class DeliveryTests(unittest.TestCase):
             run = ci.Run(root / 'private', secrets=['actual-secret-value'])
             command = '--command="D:\\build\\apps\\mvnw.cmd" -B -f "D:\\build\\apps\\pom.xml" clean compile'
             data = {'source_revision': 'a' * 40, 'exit_code': 0, 'commands': [command],
-                    'nested': [{'secret': 'actual-secret-value', 'valid': True}]}
+                    'nested': [{'secret': 'actual-secret-value', 'valid': True}],
+                    '$schema': 'https://json.schemastore.org/sarif-2.1.0.json',
+                    'uri': 'http://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd'}
             for filename in ('result.json', 'codeql-vulnerable.sarif'):
                 (run.path / filename).write_text(json.dumps(data), encoding='utf-8')
             with patch.object(ci, 'ROOT', root):
@@ -83,6 +85,8 @@ class DeliveryTests(unittest.TestCase):
                 self.assertEqual(public['exit_code'], 0)
                 self.assertEqual(public['commands'], ['--command="[LOCAL_PATH]" -B -f "[LOCAL_PATH]" clean compile'])
                 self.assertTrue(public['nested'][0]['valid'])
+                self.assertEqual(public['$schema'], data['$schema'])
+                self.assertEqual(public['uri'], data['uri'])
                 self.assertNotIn('actual-secret-value', text)
                 self.assertNotIn('D:', text)
 
@@ -92,6 +96,9 @@ class DeliveryTests(unittest.TestCase):
             run = ci.Run(root / 'private', secrets=['actual-secret-value'])
             from xml.etree import ElementTree as ET
             suite = ET.Element('testsuite', tests='1')
+            schema_key = '{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation'
+            schema_uri = 'https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd'
+            suite.set(schema_key, schema_uri)
             ET.SubElement(suite, 'properties').text = 'private runtime metadata'
             case = ET.SubElement(suite, 'testcase', name='quotes " & values', file='D:\\build\\test.py')
             ET.SubElement(case, 'system-out').text = 'actual-secret-value'
@@ -102,6 +109,7 @@ class DeliveryTests(unittest.TestCase):
             text = (dest / 'backend.xml').read_text(encoding='utf-8')
             public = ET.fromstring(text)
             self.assertEqual(public.find('testcase').attrib['name'], 'quotes " & values')
+            self.assertEqual(public.attrib[schema_key], schema_uri)
             self.assertIsNone(public.find('properties'))
             self.assertIsNone(public.find('testcase/system-out'))
             self.assertNotIn('actual-secret-value', text)
