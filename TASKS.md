@@ -1,3 +1,7 @@
-# Public candidate tasks
+# Public release tasks
 
-导出、脱敏、独立完整性清单和本地回归进行中。Apache-2.0 与实际 GitHub noreply 身份已由维护者确认。GitHub 创建/push/最终发布不在本轮授权内。
+- 已完成：独立源码导出、内容脱敏、文件清单、Apache-2.0/第三方许可审查、实际 noreply 核实和本地回归。
+- 已完成：独立公开仓库部署及 `6ef7533dd39ffe60847c75f48335fc1dd4e72cfd` 的三项托管验收；产物脱敏修复和失败记录保留。
+- 最终封存已获维护者授权；本次完成状态文档提交也须先取得同一 SHA 的三项实际远程 PASS。
+
+最终完成状态、正式标签、工作流链接与真实退出码在 [最终验收说明](docs/release/FINAL_RELEASE.md) 指定的 GitHub Release 验收记录中保存。首次本地准备文件是历史记录，不作为后续提交的验收证明。

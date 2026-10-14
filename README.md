@@ -10,6 +10,8 @@
 - [独立快照与文件完整性](docs/release/PROVENANCE.md)
 - [CI 与 CodeQL 许可](docs/ci/README.md)
 - [第三方许可审查](docs/release/THIRD_PARTY.md)
+- [Phase 6 最终验收与正式发布](docs/release/FINAL_RELEASE.md)
 
-公开候选与托管最终验收是不同状态。此快照未创建远程仓库、未 push，PHASE6_READY=false。
+独立公开仓库已建立并完成实际托管验收。任何后续完成状态文档提交也必须通过同一 SHA 的常规 CI、托管 CodeQL 与隔离 ZAP，才能正式封存。
+正式封存状态以 [phase6-final-release](https://github.com/ning18898-stack/java-devsecops-lab-public/releases/tag/phase6-final-release) 的 `phase6-final-acceptance.json` 为准；该记录绑定最终通过验收的提交及三项工作流，全部条件满足后才设置 `PHASE6_READY=true`。
 自有内容采用 Apache-2.0（见 LICENSE/NOTICE）；第三方内容保留上游条款。新提交只使用已核实的 GitHub 用户名/noreply。

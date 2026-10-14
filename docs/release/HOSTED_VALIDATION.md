@@ -16,4 +16,6 @@ Apache-2.0 已由 GitHub 识别。在公开托管、维护且许可证覆盖源�
 
 local-validation.json 与 RELEASE_PREPARATION.md 记录首次本地候选准备，不代表后续提交的托管 PASS。托管工作流上传脱敏 result/XML/SARIF 白名单，原日志、数据库和工具保持不公开；CodeQL SARIF 作为验收产物保存，本工作流没有导入 GitHub Security 告警页。
 
-完整托管验收与最终发布封存是独立步骤；此处不设置 PHASE6_READY=true 或创建最终发布标签。
+`6ef7533dd39ffe60847c75f48335fc1dd4e72cfd` 已实际通过 [常规 CI](https://github.com/ning18898-stack/java-devsecops-lab-public/actions/runs/38417596638)、[许可门禁与 CodeQL](https://github.com/ning18898-stack/java-devsecops-lab-public/actions/runs/38417603435) 和 [隔离 ZAP](https://github.com/ning18898-stack/java-devsecops-lab-public/actions/runs/38417610689)，下载产物的 JSON/XML/SARIF 及隐私复核通过。
+
+维护者已授权最终封存。完成状态文档的后续提交必须重新验收；最终 PHASE6_READY、提交、正式标签和 Release 状态以 [FINAL_RELEASE.md](FINAL_RELEASE.md) 指定的绑定记录为准。
